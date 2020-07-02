@@ -1,0 +1,8 @@
+apiVersion: snapshot.storage.k8s.io/v1beta1
+kind: VolumeSnapshot
+metadata:
+  name: dv-source1-volume-snapshot
+spec:
+  volumeSnapshotClassName: <csi-hostpath-snapclass> # oc get volumeSnapshotClass
+  source:
+    persistentVolumeClaimName: dv-source1

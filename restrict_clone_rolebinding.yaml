@@ -1,0 +1,12 @@
+kind: RoleBinding
+metadata:
+  name: allow-clone-to-user 
+  namespace: <source_namespace>  
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: <target_namespace>
+roleRef:
+  kind: ClusterRole
+  name: datavolume-cloner 
+  apiGroup: rbac.authorization.k8s.io

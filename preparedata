@@ -1,0 +1,84 @@
+[cnv-qe-jenkins@cnv-executor-ginger54 storage-tests]$ cat dv1
+---
+apiVersion: cdi.kubevirt.io/v1alpha1
+kind: DataVolume
+metadata:
+  name: dv1
+spec:
+  source:
+    http:
+      url: http://cnv-qe-server.rhevdev.lab.eng.rdu2.redhat.com/files/cnv-tests/cirros-images/cirros-0.4.0-x86_64-disk.qcow2
+  pvc:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 2Gi
+    storageClassName: hostpath-provisioner
+    volumeMode: Filesystem
+  contentType: kubevirt
+[cnv-qe-jenkins@cnv-executor-ginger54 storage-tests]$ cat dv2
+---
+apiVersion: cdi.kubevirt.io/v1alpha1
+kind: DataVolume
+metadata:
+  name: dv2
+spec:
+  source:
+    http:
+      url: http://cnv-qe-server.rhevdev.lab.eng.rdu2.redhat.com/files/cnv-tests/cirros-images/cirros-0.4.0-x86_64-disk.qcow2
+  pvc:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 2Gi
+    storageClassName: nfs
+    volumeMode: Filesystem
+  contentType: kubevirt
+[cnv-qe-jenkins@cnv-executor-ginger54 storage-tests]$ cat vm1
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  name: vm1
+spec:
+  template:
+    spec:
+      domain:
+        resources:
+          requests:
+            memory: 512M
+        devices:
+          rng: {}
+          disks:
+          - disk:
+              bus: virtio
+            name: dv1
+      volumes:
+      - name: dv1
+        dataVolume:
+          name: dv1
+  running: true
+[cnv-qe-jenkins@cnv-executor-ginger54 storage-tests]$ cat vm2
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  name: vm2
+spec:
+  template:
+    spec:
+      domain:
+        resources:
+          requests:
+            memory: 512M
+        devices:
+          rng: {}
+          disks:
+          - disk:
+              bus: virtio
+            name: dv2
+      volumes:
+      - name: dv2
+        dataVolume:
+          name: dv2
+  running: true

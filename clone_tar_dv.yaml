@@ -1,0 +1,19 @@
+---
+apiVersion: cdi.kubevirt.io/v1alpha1
+kind: DataVolume
+metadata:
+  name: dv-target
+spec:
+  source:
+    pvc:
+      name: dv-source
+      namespace: cdi-clone-test-clone
+  pvc:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 10Gi
+    storageClassName: hostpath-provisioner
+    volumeMode: Filesystem
+  contentType: kubevirt

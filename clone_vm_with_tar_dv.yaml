@@ -1,0 +1,27 @@
+---
+apiVersion: kubevirt.io/v1alpha3
+kind: VirtualMachine
+metadata:
+  name: cirros-vm
+spec:
+  template:
+    spec:
+      domain:
+        resources:
+          requests:
+            memory: 64M
+        devices:
+          rng: {}
+          disks:
+          - disk:
+              bus: virtio
+            name: dv-disk
+      volumes:
+      - name: dv-disk
+        dataVolume:
+          name: dv-target
+    metadata:
+      labels:
+        kubevirt.io/vm: cirros-vm
+        kubevirt.io/domain: cirros-vm
+  running: true

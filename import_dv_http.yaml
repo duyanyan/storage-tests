@@ -1,0 +1,18 @@
+---
+apiVersion: cdi.kubevirt.io/v1alpha1
+kind: DataVolume
+metadata:
+  name: import-dv-http
+spec:
+  source:
+    http:
+      url: http://cnv-qe-server.rhevdev.lab.eng.rdu2.redhat.com/files/cnv-tests/fedora-images/Fedora-Cloud-Base-30-1.2.x86_64.qcow2
+  pvc:
+    accessModes:
+    - ReadWriteOnce
+    resources:
+      requests:
+        storage: 5Gi
+    storageClassName: ocs-storagecluster-ceph-rbd
+    volumeMode: Block
+  contentType: kubevirt

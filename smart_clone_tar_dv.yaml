@@ -1,0 +1,17 @@
+apiVersion: cdi.kubevirt.io/v1alpha1
+kind: DataVolume
+metadata: 
+  name: dv-target1
+spec: 
+  pvc:
+    storageClassName: ocs-storagecluster-ceph-rbd
+    volumeMode: Block
+    accessModes: 
+      - ReadWriteOnce
+    resources: 
+      requests: 
+        storage: 1Gi
+  source: 
+    pvc: 
+      name: dv-source1
+      namespace: dy  # change me: The namespace of the srouce pvc

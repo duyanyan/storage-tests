@@ -1,0 +1,9 @@
+apiVersion: snapshot.storage.k8s.io/v1alpha1
+kind: VolumeSnapshot
+metadata:
+  name: csi-rbd # VolumeSnapshot name
+spec:
+  snapshotClassName: csi-rbd  # the VolumeSnapshotClass name
+  source:
+    name: csi-rbd # srouce pvc name
+    kind: PersistentVolumeClaim

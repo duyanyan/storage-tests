@@ -1,0 +1,7 @@
+virtctl image-upload --pvc-name=cirros --pvc-size=1Gi --image-path=/home/cnv-qe-jenkins/duyan/cirros-0.4.0-x86_64-disk.qcow2 --insecure --block-volume --storage-class=ocs-storagecluster-ceph-rbd
+
+
+upload api:
+1. oc create -f upload_dv.yaml
+2. TOKEN=$(kubectl apply -f upload_token.yaml -o="jsonpath={.status.token}")
+3. curl -v --insecure -H "Authorization: Bearer $TOKEN" --data-binary @cirros-0.4.0-x86_64-disk.qcow2  https://cdi-uploadproxy-openshift-cnv.apps.working.oc4/v1alpha1/upload
