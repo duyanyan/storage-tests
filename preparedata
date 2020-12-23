@@ -14,8 +14,8 @@ spec:
     resources:
       requests:
         storage: 2Gi
-    storageClassName: hostpath-provisioner
-    volumeMode: Filesystem
+    storageClassName: ocs-storagecluster-ceph-rbd
+    volumeMode: Block
   contentType: kubevirt
 [cnv-qe-jenkins@cnv-executor-ginger54 storage-tests]$ cat dv2
 ---
@@ -33,8 +33,8 @@ spec:
     resources:
       requests:
         storage: 2Gi
-    storageClassName: nfs
-    volumeMode: Filesystem
+    storageClassName: ocs-storagecluster-ceph-rbd
+    volumeMode: Block
   contentType: kubevirt
 [cnv-qe-jenkins@cnv-executor-ginger54 storage-tests]$ cat vm1
 apiVersion: kubevirt.io/v1alpha3
