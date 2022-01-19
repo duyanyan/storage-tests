@@ -1,0 +1,48 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/vm: fedora
+  name: fedora
+spec:
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: fedora
+        kubevirt.io/domain: fedora
+    spec:
+      domain:
+        cpu:
+          cores: 1
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: containerdisk
+          - disk:
+              bus: virtio
+            name: cloudinitdisk
+          interfaces:
+          - masquerade: {}
+            name: default
+          rng: {}
+        machine:
+          type: ''
+        resources:
+          requests:
+            memory: 1024Mi
+      networks:
+      - name: default
+        pod: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - containerDisk:
+          image: quay.io/openshift-cnv/qe-cnv-tests-fedora:33
+        name: containerdisk
+      - name: cloudinitdisk
+        cloudInitNoCloud:
+          userData: |-
+            #cloud-config
+            password: fedora
+            chpasswd: { expire: False }      
+  running: true

@@ -1,0 +1,19 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataImportCron
+metadata:
+  name: rhel8-image-import-cron
+spec:
+  template:
+    spec:
+      source:
+        registry:
+          imageStream: rhel8-is
+          pullMethod: node
+      storage:
+        resources:
+          requests:
+            storage: 10Gi
+        storageClassName: ocs-storagecluster-ceph-rbd
+  schedule: "* * * * *"
+  importsToKeep: 1
+  managedDataSource: rhel8
