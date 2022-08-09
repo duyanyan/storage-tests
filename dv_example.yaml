@@ -16,8 +16,8 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 100M
-        storageClassName: hostpath-provisioner
+            storage: 10Gi
+        storageClassName: ocs-storagecluster-ceph-rbd 
       source:
         http:
           #url: https://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
@@ -38,7 +38,7 @@ spec:
           type: ""
         resources:
           requests:
-            memory: 64M
+            memory: 1024M
       terminationGracePeriodSeconds: 0
       volumes:
       - dataVolume:
