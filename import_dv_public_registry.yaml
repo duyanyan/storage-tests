@@ -7,8 +7,8 @@ spec:
     registry:
       url: "docker://kubevirt/fedora-cloud-registry-disk-demo"
   pvc:
-    storageClassName: hostpath-provisioner
-    volumeMode: Filesystem
+    storageClassName: ocs-storagecluster-ceph-rbd
+    volumeMode: Block
     accessModes:
       - ReadWriteOnce
     resources:
