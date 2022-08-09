@@ -13,6 +13,6 @@ spec:
     resources:
       requests:
         storage: 10Gi
-    storageClassName: hostpath-provisioner
-    volumeMode: Filesystem
+    storageClassName: ocs-storagecluster-ceph-rbd
+    volumeMode: Block
   contentType: kubevirt
