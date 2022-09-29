@@ -1,0 +1,109 @@
+---
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  annotations:
+  labels:
+    app: vm-8307-1663725812-8415487
+    vm.kubevirt.io/template: windows11-desktop-medium
+    vm.kubevirt.io/template.namespace: openshift
+    vm.kubevirt.io/template.revision: '1'
+    vm.kubevirt.io/template.version: v0.23.4
+    created-by-cnv-tests: 'Yes'
+  name: vm-8307-1663725812-8415487
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      name: dv-8307
+      namespace: default
+      labels:
+        created-by-cnv-tests: 'Yes'
+    spec:
+      source:
+        http:
+          url: http://cnv-qe-server.rhevdev.lab.eng.rdu2.redhat.com/files/cnv-tests/windows-images/raw_images/win19.raw
+      storage:
+        resources:
+          requests:
+            storage: 70Gi
+        storageClassName: ocs-storagecluster-ceph-rbd
+      contentType: kubevirt
+  running: false
+  template:
+    metadata:
+      annotations:
+        vm.kubevirt.io/flavor: medium
+        vm.kubevirt.io/os: windows11
+        vm.kubevirt.io/workload: desktop
+      labels:
+        kubevirt.io/domain: vm-8307-1663725812-8415487
+        kubevirt.io/size: medium
+        kubevirt.io/vm: vm-8307-1663725812-8415487
+    spec:
+      domain:
+        clock:
+          timer:
+            hpet:
+              present: false
+            hyperv: {}
+            pit:
+              tickPolicy: delay
+            rtc:
+              tickPolicy: catchup
+          utc: {}
+        cpu:
+          cores: 2
+          sockets: 1
+          threads: 2
+          model:
+        devices:
+          disks:
+          - disk:
+              bus: sata
+            name: rootdisk
+          inputs:
+          - bus: usb
+            name: tablet
+            type: tablet
+          interfaces:
+          - masquerade: {}
+            model: e1000e
+            name: default
+          tpm: {}
+          rng: {}
+        features:
+          acpi: {}
+          apic: {}
+          hyperv:
+            frequencies: {}
+            ipi: {}
+            reenlightenment: {}
+            relaxed: {}
+            reset: {}
+            runtime: {}
+            spinlocks:
+              spinlocks: 8191
+            synic: {}
+            synictimer:
+              direct: {}
+            tlbflush: {}
+            vapic: {}
+            vpindex: {}
+          smm: {}
+        firmware:
+          bootloader:
+            efi:
+              secureBoot: true
+        machine:
+          type: pc-q35-rhel8.6.0
+        resources:
+          requests:
+            memory: 8Gi
+      networks:
+      - name: default
+        pod: {}
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: dv-8307
+        name: rootdisk
