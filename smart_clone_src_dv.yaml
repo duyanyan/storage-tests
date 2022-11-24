@@ -7,10 +7,10 @@ spec:
       http:
          url: "http://cnv-qe-server.rhevdev.lab.eng.rdu2.redhat.com/files/cnv-tests/cirros-images/cirros-0.4.0-x86_64-disk.qcow2"
   pvc:
-    storageClassName: hostpath-provisioner
-    volumeMode: Filesystem
+    storageClassName: ocs-storagecluster-ceph-rbd
+    volumeMode: Block
     accessModes:
-     - ReadWriteOnce
+     - ReadWriteMany
     resources:
       requests:
         storage: 2Gi
