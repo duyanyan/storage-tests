@@ -1,0 +1,9 @@
+apiVersion: export.kubevirt.io/v1alpha1
+kind: VirtualMachineExport
+metadata:
+    name: export-pvc
+spec:
+    source:
+        kind: PersistentVolumeClaim
+        name: cirros-dv-source
+    tokenSecretRef: virt-export-token
