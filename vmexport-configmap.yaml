@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: router-cert
+data:
+  router-cert: |
+    -----BEGIN CERTIFICATE-----
+          MIIDgzCCAmugAwIBAgIIWuHa2YOLMLgwDQYJKoZIhvcNAQELBQAwJjEkMCIGA1UE
+          AwwbaW5ncmVzcy1vcGVyYXRvckAxNjY5NjQ5MTgyMB4XDTIyMTEyODE1MjYyMloX
+          DTI0MTEyNzE1MjYyM1owMTEvMC0GA1UEAwwmKi5hcHBzLmMwMS15YWR1NDEyYS5j
+          bnYtcWUucmhjbG91ZC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB
+          AQC34vfkytQf+2BpUEnio3sI6qXxR8ZsGZdnyzQmjwAh5t8taJaaFROouqvNileA
+          NGQBPZCBNecGKOCQdu+bP0mAqjxjKGdUgHY+aVv/EYU4arEM4Mp2AmnoC/SJpPF5
+          6JnZLUoXL1f9v/JEbpR2+uXCU51OcBGJIVCmg0M7ZGNKzxKaqDERMxv7F1boYqkp
+          WaivzCKT1BYBYkyO05Gzro6oMYt5nPd5/lkkTJwB4hKXB1oQc6csyZwF/foJG2RC
+          QebI5f73d74wF6OA+GifChJwPB2TUtxWubac4LbrL4QLqmYuC0KZiEWDset1jY3e
+          N9EdQSlWc/FXBUlSeEihH1UFAgMBAAGjgakwgaYwDgYDVR0PAQH/BAQDAgWgMBMG
+          A1UdJQQMMAoGCCsGAQUFBwMBMAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFNdO7rhn
+          LThRNi6/bvmuZOi+N43zMB8GA1UdIwQYMBaAFHTlB6Z2EpF5s8PbZFS3jBtVXGUm
+          MDEGA1UdEQQqMCiCJiouYXBwcy5jMDEteWFkdTQxMmEuY252LXFlLnJoY2xvdWQu
+          Y29tMA0GCSqGSIb3DQEBCwUAA4IBAQC/4oO5V/gWlr2NUG4RsGzCvNOahQVjxkN9
+          NpVR/g3rHedwY5h3xyQx93A/V9+3dvfSKTn8weA0OV9zTFBzTuVJA64FDoIEDsp5
+          oT9jS853Ytt3eaIAtIOJ5iCwud98skOj1F1mwKCO9d6w2jbyiOQecx0H1XEddRfe
+          vRBJpuYobbRf6Xtqjv6LKZbOWqrh2Dp4tsfWtc5HXp8de3ABWcGMu1ST4wwRAJnK
+          J/ZpDhYDFEope6lDWVsQlISmJ1ZluZ/rrI5L6W79Q1AqWo28ZbC1nker2rwzowkA
+          Hs9E8Eww1ZX36zeelO09FJi8pHzjHloMUHiUlm+fisjSmQMznYee
+    -----END CERTIFICATE-----
