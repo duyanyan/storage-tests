@@ -1,0 +1,15 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  annotations:
+    cdi.kubevirt.io/storage.bind.immediate.requested: "true"
+  name: cirros-dv-source
+spec:
+  source:
+    http:
+      url: http://cnv-qe-server.cnv-qe.rhood.us/files/cnv-tests/cirros-images/cirros-0.4.0-x86_64-disk.qcow2
+  storage:
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: hostpath-csi-basic
