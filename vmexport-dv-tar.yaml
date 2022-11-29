@@ -1,0 +1,20 @@
+---
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  annotations:
+    cdi.kubevirt.io/storage.bind.immediate.requested: 'true'
+  name: cirros-dv-target-1
+  namespace: default
+spec:
+  source:
+    http:
+      certConfigMap: router-cert
+      secretExtraHeaders:
+      - secret-headers
+      url: https://virt-exportproxy-openshift-cnv.apps.c01-yadu412a.cnv-qe.rhcloud.com/api/export.kubevirt.io/v1alpha1/namespaces/default/virtualmachineexports/export-pvc/volumes/cirros-dv-source/disk.img
+  storage:
+    resources:
+      requests:
+        storage: 1Gi
+    storageClassName: hostpath-csi-basic
