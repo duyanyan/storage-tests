@@ -5,7 +5,6 @@ metadata:
   annotations:
     cdi.kubevirt.io/storage.bind.immediate.requested: 'true'
   name: cirros-dv-target-1
-  namespace: default
 spec:
   source:
     http:
