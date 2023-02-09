@@ -6,7 +6,7 @@ metadata:
 spec:
   source:
     http:
-      url: http://cnv-qe-server.rhevdev.lab.eng.rdu2.redhat.com/files/cnv-tests/fedora-images/Fedora-Cloud-Base-30-1.2.x86_64.qcow2
+      url: http://cnv-qe-server.rhevdev.lab.eng.rdu2.redhat.com/files/cnv-tests/fedora-images/Fedora-Cloud-Base-35-1.2.x86_64.qcow2
   pvc:
     accessModes:
     - ReadWriteOnce
