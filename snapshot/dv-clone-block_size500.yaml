@@ -1,0 +1,17 @@
+apiVersion: cdi.kubevirt.io/v1beta1
+kind: DataVolume
+metadata:
+  name: dv-clone
+  namespace: ns2
+spec:
+  source:
+    snapshot:
+      namespace: ns1
+      name: golden-volumesnapshot
+  storage:
+    accessModes:
+      - ReadWriteOnce
+    volumeMode: Block
+    resources:
+      requests:
+        storage: 500Mi
