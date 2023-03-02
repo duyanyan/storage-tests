@@ -1,12 +1,12 @@
 apiVersion: cdi.kubevirt.io/v1beta1
 kind: DataVolume
 metadata:
-  name: dv-clone-das
+  name: dv-clone-from-das
 spec:
   sourceRef:
-    snapshot:
-      namespace: ns1
-      name: test-das
+    kind: DataSource
+    name: test-das
+    namespace: ns1
   storage:
     accessModes:
       - ReadWriteOnce
