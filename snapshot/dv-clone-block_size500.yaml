@@ -2,7 +2,6 @@ apiVersion: cdi.kubevirt.io/v1beta1
 kind: DataVolume
 metadata:
   name: dv-clone
-  namespace: ns2
 spec:
   source:
     snapshot:
