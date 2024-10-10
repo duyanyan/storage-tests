@@ -1,0 +1,56 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/vm: vm-fedora
+  name: vm-fedora
+  namespace: mig-vm
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      name: fedora-40-dv-template
+      namespace: mig-vm
+    spec:
+      storage:
+        resources:
+          requests:
+            storage: 8Gi
+      source:
+        http:
+          url: "https://download.fedoraproject.org/pub/fedora/linux/releases/40/Cloud/x86_64/images/Fedora-Cloud-Base-AmazonEC2.x86_64-40-1.14.raw.xz"
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: vm-fedora
+    spec:
+      networks:
+      - name: default
+        pod: {}
+      domain:
+        ioThreadsPolicy: auto
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: datavolumedisk1
+          - disk:
+             bus: virtio
+            name: cloudinitdisk
+          interfaces:
+          - masquerade: {}
+            name: default
+        resources:
+          requests:
+            memory: 1024Mi
+      terminationGracePeriodSeconds: 0
+      volumes:
+      - dataVolume:
+          name: fedora-40-dv-template
+        name: datavolumedisk1
+      - cloudInitNoCloud:
+          userData: |-
+            #cloud-config
+            password: fedora
+            chpasswd: { expire: False }
+        name: cloudinitdisk

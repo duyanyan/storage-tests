@@ -1,0 +1,17 @@
+apiVersion: migration.openshift.io/v1alpha1
+kind: MigPlan
+metadata:
+  labels:
+    controller-tools.k8s.io: "1.0"
+  name: migplan2
+  namespace: openshift-migration
+spec:
+  srcMigClusterRef:
+    name: host
+    namespace: openshift-migration
+  destMigClusterRef:
+    name: host
+    namespace: openshift-migration
+  namespaces:
+  - mig-vm
+  refresh: false
