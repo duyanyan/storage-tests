@@ -1,0 +1,11 @@
+apiVersion: migration.openshift.io/v1alpha1
+kind: MigMigration
+metadata:
+  name: stage-my
+  namespace: openshift-migration
+spec:
+  migPlanRef:
+    name: migplan1
+    namespace: openshift-migration
+  migrateState: true
+  stage: false
