@@ -1,0 +1,12 @@
+apiVersion: migration.openshift.io/v1alpha1
+kind: MigMigration
+metadata:
+  name: rollback-my
+  namespace: openshift-migration
+spec:
+  migPlanRef:
+    name: migplan1
+    namespace: openshift-migration
+  rollback: true
+  stage: false
+[cloud-user@oc
