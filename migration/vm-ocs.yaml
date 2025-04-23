@@ -1,0 +1,41 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  name: vm-cirros-source-ocs
+  labels:
+    kubevirt.io/vm: vm-cirros-source-ocs
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      name: cirros-dv-source-ocs
+    spec:
+      storage:
+        resources:
+          requests:
+            storage: 1Gi
+        storageClassName: ocs-storagecluster-ceph-rbd
+      source:
+        http:
+          url: https://download.cirros-cloud.net/0.6.0/cirros-0.6.0-x86_64-disk.img
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: vm-cirros-source-ocs
+    spec:
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: datavolumev-ocs
+        machine:
+          type: ""
+        resources:
+          requests:
+            memory: 100M
+      terminationGracePeriodSeconds: 0
+      volumes:
+      - dataVolume:
+          name: cirros-dv-source-ocs
+        name: datavolumev-ocs
