@@ -1,0 +1,8 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachineInstanceMigration
+metadata:
+  name: vmim-source
+spec:
+  operation: source
+  connectURL: "sync-endpoint" # changeme: the syncpoint defined in vmim source
+  vmiName: vm-fedora-datavolume # changeme: the vmi name

@@ -1,0 +1,7 @@
+apiVerison: kubevirt.io/v1
+kind: VirtualMachineInstanceMigration
+metadata:
+  name: vmim-target
+spec:
+  operation: target
+  vmiName: vm-fedora-datavolume
