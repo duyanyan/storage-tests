@@ -1,0 +1,8 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachineInstanceMigration
+metadata:
+  name: vmim-target
+spec:
+  receive:
+    migrationID: "mig1"
+  vmName: vmi-name # changeme - The VMI name
