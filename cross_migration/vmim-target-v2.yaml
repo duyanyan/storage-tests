@@ -5,4 +5,4 @@ metadata:
 spec:
   receive:
     migrationID: "mig1"
-  vmName: vmi-name # changeme - The VMI name
+  vmiName: vmi-name # changeme - The VMI name
