@@ -4,6 +4,6 @@ metadata:
   name: vmim-source
 spec:
   sendTo:
-    migrationID: "mig1"
+    migrationID: mig1
     connectURL: "the url to connect the sync channel" # changeme - The endpoint for the synchronization controller
-  vmName: vmi-name # changeme - The VMI name
+  vmiName: vmi-name # changeme - The VMI name
