@@ -1,0 +1,37 @@
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Plan
+metadata:
+  annotations:
+    populatorLabels: 'True'
+  name: plan-test
+  namespace: openshift-mtv
+spec:
+  map:
+    network:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: NetworkMap
+      name: source-networkmap
+      namespace: openshift-mtv
+    storage:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: StorageMap
+      name: source-storagemap
+      namespace: openshift-mtv
+  migrateSharedDisks: true
+  provider:
+    destination:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: host
+      namespace: openshift-mtv
+    source:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: source-provider
+      namespace: openshift-mtv
+  pvcNameTemplateUseGenerateName: true
+  targetNamespace: default
+  vms:
+    - name: fedora
+      namespace: mig
+

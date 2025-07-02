@@ -1,0 +1,12 @@
+apiVersion: forklift.konveyor.io/v1beta1
+kind: Provider
+metadata:
+  name: source-provider
+  namespace: openshift-mtv
+spec:
+  secret:
+    name: source-secret
+    namespace: openshift-mtv
+  type: openshift
+  url: 'https://api.stg-yadu419.rhos-psi.cnv-qe.rhood.us:6443'
+

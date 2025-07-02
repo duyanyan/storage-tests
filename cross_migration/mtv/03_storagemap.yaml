@@ -1,0 +1,23 @@
+apiVersion: forklift.konveyor.io/v1beta1
+kind: StorageMap
+metadata:
+  name: source-storagemap
+  namespace: openshift-mtv
+spec:
+  map:
+    - destination:
+        storageClass: hostpath-csi-basic
+      source:
+        name: ocs-storagecluster-ceph-rbd-virtualization
+  provider:
+    destination:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: host
+      namespace: openshift-mtv
+    source:
+      apiVersion: forklift.konveyor.io/v1beta1
+      kind: Provider
+      name: source-provider
+      namespace: openshift-mtv
+
