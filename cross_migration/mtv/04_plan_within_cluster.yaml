@@ -6,6 +6,7 @@ metadata:
   name: plan-test
   namespace: openshift-mtv
 spec:
+  type: live
   map:
     network:
       apiVersion: forklift.konveyor.io/v1beta1
