@@ -15,12 +15,3 @@ spec:
           accessModes:
             - ReadWriteMany
           volumeMode: Block
-    - name: centos10
-      targetMigrationPVCs:
-      - volumeName: rootdisk
-        destinationPVC:
-          name: centos-pvc
-          storageClassName: ocs-storagecluster-ceph-rbd
-          accessModes:
-            - ReadWriteMany
-          volumeMode: Block
