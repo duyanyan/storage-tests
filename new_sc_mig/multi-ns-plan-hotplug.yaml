@@ -1,0 +1,20 @@
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MultiNamespaceVMStorageMigrationPlan
+metadata:
+  name: multi-mig-plan-hotplug
+spec:
+  namespaces:
+    - name: mig
+      virtualMachines:
+        - name: fedora
+          targetMigrationPVCs:
+            - volumeName: rootdisk
+              destinationPVC:
+                storageClassName: ocs-storagecluster-ceph-rbd
+                accessModes: ["Auto"]
+                volumeMode: "Auto"
+            - volumeName: hotplugdisk
+              destinationPVC:
+                storageClassName: ocs-storagecluster-ceph-rbd
+                accessModes: ["Auto"]
+                volumeMode: "Auto"

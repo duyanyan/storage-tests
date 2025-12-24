@@ -1,0 +1,26 @@
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MultiNamespaceVirtualMachineStorageMigrationPlan
+metadata:
+  name: multi-mig-plan2
+spec:
+  namespaces:
+  - name: mig
+    virtualMachines:
+    - name: fedora
+      targetMigrationPVCs:
+      - volumeName: rootdisk
+        destinationPVC:
+          name: fedora-pvc
+          storageClassName: ocs-storagecluster-ceph-rbd
+          accessModes:
+            - Auto
+          volumeMode: Auto
+    - name: centos10
+      targetMigrationPVCs:
+      - volumeName: rootdisk
+        destinationPVC:
+          name: centos-pvc
+          storageClassName: ocs-storagecluster-ceph-rbd
+          accessModes:
+            - Auto
+          volumeMode: Auto

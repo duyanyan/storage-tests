@@ -1,0 +1,7 @@
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MultiNamespaceVirtualMachineStorageMigration
+metadata:
+  name: multi-mig-migration-diffns
+spec:
+  multiNamespaceVirtualMachineStorageMigrationPlanRef: 
+    name: "multi-mig-plan-diffns"

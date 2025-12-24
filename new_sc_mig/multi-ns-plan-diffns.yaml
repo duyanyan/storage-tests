@@ -1,0 +1,14 @@
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: MultiNamespaceVMStorageMigrationPlan
+metadata:
+  name: multi-mig-plan-diffns
+spec:
+  namespaces:
+    - name: mig1
+      virtualMachines:
+        - name: cnetos
+    - name: mig2
+      virtualMachines:
+        - name: fedora
+  storage:
+    defaultTargetStorageClass: "ocs-storagecluster-ceph-rbd"

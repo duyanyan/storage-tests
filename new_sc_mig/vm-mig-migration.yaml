@@ -1,0 +1,7 @@
+apiVersion: migrations.kubevirt.io/v1alpha1
+kind: VirtualMachineStorageMigration
+metadata:
+  name: vmsc-migration1
+spec:
+  virtualMachineStorageMigrationPlanRef: 
+    name: "vmscplan1"
