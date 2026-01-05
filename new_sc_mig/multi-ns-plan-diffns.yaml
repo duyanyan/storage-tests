@@ -10,19 +10,19 @@ spec:
           targetMigrationPVCs:
             - volumeName: rootdisk
               destinationPVC:
-              name: centos-pvc
-              storageClassName: ocs-storagecluster-ceph-rbd
-              accessModes:
-              - Auto
-              volumeMode: Auto
+                name: centos-pvc
+                storageClassName: ocs-storagecluster-ceph-rbd
+                accessModes:
+                  - Auto
+                volumeMode: Auto
     - name: mig2
       virtualMachines:
         - name: fedora
           targetMigrationPVCs:
             - volumeName: rootdisk
               destinationPVC:
-              name: fedora-pvc
-              storageClassName: ocs-storagecluster-ceph-rbd
-              accessModes:
-              - Auto
-              volumeMode: Auto
+                name: fedora-pvc
+                storageClassName: ocs-storagecluster-ceph-rbd
+                accessModes:
+                  - Auto
+                volumeMode: Auto
