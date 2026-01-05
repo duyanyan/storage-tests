@@ -6,7 +6,7 @@ spec:
   namespaces:
     - name: mig1
       virtualMachines:
-        - name: cnetos
+        - name: centos
     - name: mig2
       virtualMachines:
         - name: fedora
