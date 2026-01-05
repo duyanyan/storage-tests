@@ -1,28 +1,20 @@
 apiVersion: migrations.kubevirt.io/v1alpha1
 kind: MultiNamespaceVirtualMachineStorageMigrationPlan
 metadata:
-  name: multi-mig-plan-diffns
+  name: multi-ns-plan-diffns
 spec:
   namespaces:
     - name: mig1
       virtualMachines:
         - name: centos
           targetMigrationPVCs:
-            - volumeName: rootdisk
-              destinationPVC:
-                name: centos-pvc
-                storageClassName: ocs-storagecluster-ceph-rbd
-                accessModes:
-                  - Auto
-                volumeMode: Auto
+          - volumeName: rootdisk
+            destinationPVC:
+              storageClassName: "ocs-storagecluster-ceph-rbd"
     - name: mig2
       virtualMachines:
         - name: fedora
           targetMigrationPVCs:
-            - volumeName: rootdisk
-              destinationPVC:
-                name: fedora-pvc
-                storageClassName: ocs-storagecluster-ceph-rbd
-                accessModes:
-                  - Auto
-                volumeMode: Auto
+          - volumeName: rootdisk
+            destinationPVC:
+              storageClassName: "ocs-storagecluster-ceph-rbd"
