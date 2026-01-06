@@ -3,6 +3,11 @@ kind: Pod
 metadata:
   name: verify
 spec:
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+    seccompProfile:
+      type: RuntimeDefault
   containers:
   - image: quay.io/kubevirt/cdi-importer:latest
     command:
